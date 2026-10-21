@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1200" viewBox="0 0 1920 1200">
+  <title>Connected rhombus chequered flag</title>
+  <desc>A continuous grid of sharp rhombuses meeting at their corners, with transparent alternating checks. The right-edge fade is applied separately in CSS.</desc>
+  <defs>
+    <!-- Equal-length sides and 60-degree corners, with no rounded gaps. -->
+    <pattern id="checks" width="640" height="640" patternUnits="userSpaceOnUse" patternTransform="matrix(1 0 -0.5 0.8660254 0 0) scale(0.9)">
+      <!-- A tiny overlap keeps the corner connections solid when rasterised. -->
+      <path d="M0 0H320V320H0Z M320 320H640V640H320Z" fill="#000" stroke="#000" stroke-width="1.5" stroke-linejoin="miter" />
+    </pattern>
+  </defs>
+  <rect width="1920" height="1200" fill="url(#checks)" />
+</svg>

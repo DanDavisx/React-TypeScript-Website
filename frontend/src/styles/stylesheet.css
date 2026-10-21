@@ -1,0 +1,384 @@
+
+    :root {
+        --color-background: #efefef;
+        --color-text-heading: #101010;
+
+        --color-btn1-bg: #ff3939;
+        --color-btn1-text: #101010;
+        --color-btn1-bghover: #cf3939;
+
+        --color-menu-toggle-bg: #101010;
+        --color-menu-toggle-text: #fff;
+        --color-menu-toggle-bghover: #333;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+
+    @font-face {
+    font-family: "Mattone";
+    src: url("../fonts/mattone/Mattone-Black.woff2") format("woff2");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+    }
+
+    h1 {
+        font-family: "Mattone", sans-serif;
+        font-weight: 900;
+        font-size: clamp(48px, 6vw, 110px);
+        line-height: 0.82;
+        letter-spacing: -0.055em;
+        text-transform: uppercase;
+    }
+
+    body {
+        margin: 0;
+        font-family: 'Montserrat', sans-serif;
+        background: var(--color-background);
+    }
+
+    /* Header controls occupy only the top-right corner. */
+    .site-header {
+        position: fixed;
+        top: 24px;
+        right: 4vw;
+        z-index: 30;
+    }
+
+    .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .contact-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        border: 0;
+        border-radius: 0;
+        background: var(--color-btn1-bg);
+        color: var(--color-btn1-text);
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .menu-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        border: 0;
+        border-radius: 0;
+        background: var(--color-menu-toggle-bg);
+        color: var(--color-menu-toggle-text);
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .contact-button {
+        padding: 0 24px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+    }
+
+    .menu-toggle {
+        flex-direction: column;
+        gap: 6px;
+        width: 48px;
+        padding: 12px;
+    }
+
+    .menu-toggle-line {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: currentColor;
+    }
+
+    .contact-button:hover {
+         background: var(--color-btn1-bghover);
+    }
+
+    .menu-toggle:hover {
+        background: var(--color-menu-toggle-bghover);
+    }
+
+    .header-actions :focus-visible,
+    .site-menu :focus-visible {
+        outline: 2px solid #e65c35;
+        outline-offset: 5px;
+    }
+
+    /* Remove the hidden attributes with your JavaScript to show the menu. */
+    .site-menu[hidden],
+    .menu-backdrop[hidden] {
+        display: none;
+    }
+
+    body.menu-open {
+        overflow: hidden;
+    }
+
+    .menu-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 40;
+        background: rgb(0 0 0 / 45%);
+    }
+
+    .site-menu {
+        position: fixed;
+        inset: 0 0 0 auto;
+        z-index: 50;
+        display: flex;
+        flex-direction: column;
+        width: min(100%, 440px);
+        height: 100vh;
+        height: 100dvh;
+        padding: 24px 32px 40px;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        background: #0e0e0e;
+        color: #f5f5f5;
+    }
+
+    .site-menu-header {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+    }
+
+    .site-menu-brand {
+        color: inherit;
+        font-size: 20px;
+        font-weight: 900;
+        letter-spacing: -0.06em;
+        text-decoration: none;
+    }
+
+    .menu-close {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 44px;
+        padding: 0 8px;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        color: inherit;
+        font: inherit;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    .menu-close-icon {
+        width: 16px;
+        height: 2px;
+        background: currentColor;
+    }
+
+    .site-menu-nav {
+        margin-top: 64px;
+    }
+
+    .site-menu-links {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .site-menu-links a {
+        display: block;
+        padding: 6px 0;
+        color: #bdbdbd;
+        font-size: clamp(28px, 4vw, 36px);
+        font-weight: 600;
+        line-height: 1.25;
+        letter-spacing: -0.04em;
+        text-decoration: none;
+    }
+
+    .site-menu-links a[aria-current="page"] {
+        color: #fff;
+    }
+
+    .site-menu-links a:hover,
+    .site-menu-footer a:hover,
+    .menu-close:hover {
+        color: #e65c35;
+    }
+
+    .site-menu-footer {
+        margin-top: 48px;
+    }
+
+    .site-menu-footer p {
+        margin: 0 0 10px;
+        color: #858585;
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    .site-menu-footer a {
+        display: inline-block;
+        padding: 6px 0;
+        color: #f5f5f5;
+        font-size: 22px;
+        font-weight: 600;
+        letter-spacing: -0.04em;
+        text-decoration: none;
+    }
+
+    .hero {
+        position: relative;
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: minmax(0, 55%) minmax(0, 45%);
+        align-items: center;
+        overflow: hidden; /* important */
+        padding: 0 4vw;
+        background: #efefef;
+    }
+
+    
+
+    .hero-visual {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+    }
+
+    .hero-mask {
+        position: absolute;
+        inset: 0;
+
+        background-image: url("../images/car.jpg");
+        background-size: cover;
+        background-position: center;
+
+        /* Sharp rhombuses meet at their corners across the full hero. */
+        mask-image: url("../images/checkered-flag-rhombus.svg");
+        mask-mode: alpha;
+        mask-repeat: no-repeat;
+        mask-position: left center;
+        mask-size: cover;
+
+        -webkit-mask-image: url("../images/checkered-flag-rhombus.svg");
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: left center;
+        -webkit-mask-size: cover;
+    }
+
+    /* Fade the masked photograph into the page colour, entirely in CSS. */
+    .hero-visual::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            to right,
+            rgb(239 239 239 / 0%) 24%,
+            rgb(239 239 239 / 8%) 36%,
+            rgb(239 239 239 / 42%) 48%,
+            rgb(239 239 239 / 88%) 61%,
+            rgb(239 239 239 / 98%) 77%,
+            #efefef 94%
+        );
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        grid-column: 2;
+
+        width: 100%;
+        min-width: 0;
+        max-width: none;
+
+        padding-left: 2vw;
+        justify-self: stretch;
+    }
+
+    h1 {
+      margin: 0 0 24px;
+      font-size: clamp(32px, 4vw, 92px);
+      line-height: 0.92;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      font-weight: 900;
+      color: #000;
+    }
+
+    p {
+      margin: 0;
+      max-width: 500px;
+      font-size: 18px;
+      line-height: 1.5;
+      color: #1a1a1a;
+    }
+
+    @media (max-width: 900px) {
+      .site-header {
+        top: 20px;
+        right: 24px;
+      }
+
+      .site-menu {
+        padding-right: 24px;
+        padding-left: 24px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        align-items: end;
+        min-height: 100svh;
+        padding: max(48svh, 300px) 24px 40px;
+      }
+
+      .hero-mask {
+        background-size: auto 80%;
+        background-repeat: no-repeat;
+        background-position: 35% -12svh;
+        mask-size: auto 100%;
+        -webkit-mask-size: auto 100%;
+      }
+
+      .hero-visual::after {
+        background:
+            linear-gradient(
+                to bottom,
+                rgb(239 239 239 / 0%) 22%,
+                rgb(239 239 239 / 30%) 36%,
+                rgb(239 239 239 / 95%) 49%,
+                #efefef 58%
+            ),
+            linear-gradient(to right, rgb(239 239 239 / 0%) 30%, rgb(239 239 239 / 65%) 100%);
+      }
+
+      .hero-content {
+        grid-column: 1;
+        justify-self: start;
+        padding-left: 0;
+        max-width: 100%;
+        margin-top: 0;
+      }
+
+      h1 {
+        font-size: clamp(26px, 8.5vw, 58px);
+      }
+
+      p {
+        font-size: 16px;
+      }
+    }
