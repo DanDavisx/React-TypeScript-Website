@@ -264,11 +264,6 @@
         position: absolute;
         inset: 0;
 
-        background-image: url("../images/car.jpg");
-        background-size: cover;
-        background-position: center;
-
-        /* Sharp rhombuses meet at their corners across the full hero. */
         mask-image: url("../images/checkered-flag-rhombus.svg");
         mask-mode: alpha;
         mask-repeat: no-repeat;
@@ -281,7 +276,22 @@
         -webkit-mask-size: cover;
     }
 
-    /* Fade the masked photograph into the page colour, entirely in CSS. */
+    .hero-slide {
+        position: absolute;
+        inset: 0;
+
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        opacity: 0;
+        transition: opacity 1200ms ease-in-out;
+        }
+
+    .hero-slide.is-active {
+        opacity: 1;
+    }
+
     .hero-visual::after {
         content: "";
         position: absolute;
@@ -329,56 +339,65 @@
     }
 
     @media (max-width: 900px) {
-      .site-header {
-        top: 20px;
-        right: 24px;
-      }
+        .site-header {
+            top: 20px;
+            right: 24px;
+        }
 
-      .site-menu {
-        padding-right: 24px;
-        padding-left: 24px;
-      }
+        .site-menu {
+            padding-right: 24px;
+            padding-left: 24px;
+        }
 
-      .hero {
-        grid-template-columns: 1fr;
-        align-items: end;
-        min-height: 100svh;
-        padding: max(48svh, 300px) 24px 40px;
-      }
+        .hero {
+            grid-template-columns: 1fr;
+            align-items: end;
+            min-height: 100svh;
+            padding: max(48svh, 300px) 24px 40px;
+        }
 
-      .hero-mask {
-        background-size: auto 80%;
-        background-repeat: no-repeat;
-        background-position: 35% -12svh;
+        .hero-mask {
         mask-size: auto 100%;
         -webkit-mask-size: auto 100%;
-      }
+        }
 
-      .hero-visual::after {
-        background:
-            linear-gradient(
-                to bottom,
-                rgb(239 239 239 / 0%) 22%,
-                rgb(239 239 239 / 30%) 36%,
-                rgb(239 239 239 / 95%) 49%,
-                #efefef 58%
-            ),
+        .hero-slide {
+            background-size: auto 80%;
+            background-repeat: no-repeat;
+            background-position: 35% -12svh;
+        }
+
+        .hero-visual::after {
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgb(239 239 239 / 0%) 22%,
+                    rgb(239 239 239 / 30%) 36%,
+                    rgb(239 239 239 / 95%) 49%,
+                    #efefef 58%
+                ),
             linear-gradient(to right, rgb(239 239 239 / 0%) 30%, rgb(239 239 239 / 65%) 100%);
-      }
+        }
 
-      .hero-content {
-        grid-column: 1;
-        justify-self: start;
-        padding-left: 0;
-        max-width: 100%;
-        margin-top: 0;
-      }
+        .hero-content {
+            grid-column: 1;
+            justify-self: start;
+            padding-left: 0;
+            max-width: 100%;
+            margin-top: 0;
+        }
 
-      h1 {
-        font-size: clamp(26px, 8.5vw, 58px);
-      }
+        h1 {
+            font-size: clamp(26px, 8.5vw, 58px);
+        }
 
-      p {
-        font-size: 16px;
-      }
+        p {
+            font-size: 16px;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .hero-slide {
+            transition: none;
+        }
     }

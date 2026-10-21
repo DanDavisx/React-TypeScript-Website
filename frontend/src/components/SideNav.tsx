@@ -1,7 +1,12 @@
-export default function SideNav() {
+type SideNavProps = {
+    isOpen: boolean
+    onClose: () => void
+}
+
+export default function SideNav({isOpen, onClose}: SideNavProps) {
     return (
         <>
-        <div className="menu-backdrop" id="menu-backdrop" hidden></div>
+        <div className="menu-backdrop" id="menu-backdrop" hidden={!isOpen}></div>
         <aside
         className="site-menu"
         id="site-menu"
@@ -9,10 +14,10 @@ export default function SideNav() {
         aria-modal="true"
         aria-label="Site menu"
         tabIndex={-1}
-        hidden>
+        hidden={!isOpen}>
             <div className="site-menu-header">
                 <a className="site-menu-brand" href="#home" aria-label="DanCars home">DANCARS</a>
-                <button className="menu-close" id="menu-close" type="button" aria-label="Close menu">
+                <button className="menu-close" id="menu-close" type="button" onClick={onClose} aria-label="Close menu">
                 <span className="menu-close-icon" aria-hidden="true"></span>
                 <span>Close</span>
                 </button>
