@@ -1,3 +1,5 @@
+import './Hero.css'
+
 import { useEffect, useState } from 'react'
 import firstImage from '../images/car.jpg'
 import secondImage from '../images/bmw.jpg'

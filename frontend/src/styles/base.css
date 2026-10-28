@@ -1,0 +1,49 @@
+:where(*) {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Mattone";
+    src: url("../fonts/mattone/Mattone-Black.woff2") format("woff2");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+:where(h1) {
+    font-family: var(--font-heading);
+    margin: 0 0 var(--space-7);
+    font-size: var(--font-size-heading);
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    font-weight: var(--font-weight-black);
+    color: var(--color-hero-heading);
+}
+
+:where(body) {
+    margin: 0;
+    font-family: var(--font-body);
+    background: var(--color-background);
+}
+
+:where(body.menu-open) {
+    overflow: hidden;
+}
+
+:where(p) {
+    margin: 0;
+    max-width: 500px;
+    font-size: var(--font-size-body);
+    line-height: 1.5;
+    color: var(--color-text-body);
+}
+
+@media (max-width: 900px) {
+    :where(h1) {
+        font-size: var(--font-size-heading-mobile);
+    }
+    :where(p) {
+        font-size: var(--font-size-md);
+    }
+}
