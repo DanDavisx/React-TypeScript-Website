@@ -2,7 +2,7 @@
     --color-background-rgb: 239 239 239;
     --color-background: rgb(var(--color-background-rgb));
     --color-text-heading: #101010;
-    --color-text-body: #1a1a1a;
+    --color-text-body: #fff;
     --color-hero-heading: #000;
     --color-btn1-bg: #ff3939;
     --color-btn1-text: var(--color-text-heading);
@@ -17,10 +17,16 @@
     --color-menu-text: #f5f5f5;
     --color-menu-text-muted: #bdbdbd;
     --color-menu-footer-text: #858585;
-    --color-interactive-accent: #e65c35;
+    --color-interactive-accent: #ff3939;
+    --color-hero-background: #101010;
+    --color-overlay-rgb: 0 0 0;
+    --color-on-dark-rgb: 255 255 255;
+    --color-on-dark: rgb(var(--color-on-dark-rgb));
     --blur-backdrop: 8px;
-    --font-body: 'Montserrat', sans-serif;
+    --font-body: 'Mattone', sans-serif;
     --font-heading: "Mattone", sans-serif;
+    --font-button: "Mattone", sans-serif;
+    --font-weight-button: 400;
     --font-weight-medium: 600;
     --font-weight-bold: 700;
     --font-weight-black: 900;
@@ -30,7 +36,7 @@
     --font-size-body: 18px;
     --font-size-brand: 20px;
     --font-size-footer-link: 22px;
-    --font-size-menu-link: clamp(28px, 4vw, 36px);
+    --font-size-menu-link: clamp(34px, 4vw, 44px);
     --font-size-heading: clamp(32px, 4vw, 92px);
     --font-size-heading-mobile: clamp(26px, 8.5vw, 58px);
     --space-1: 6px;

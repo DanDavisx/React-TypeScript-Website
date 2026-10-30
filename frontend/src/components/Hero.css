@@ -1,125 +1,158 @@
 .hero {
-    position: relative;
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: minmax(0, 55%) minmax(0, 45%);
-    align-items: center;
-    overflow: hidden;
-    /* important */
-    padding: 0 var(--page-gutter);
-    background: var(--color-background);
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 148px var(--page-gutter) 128px;
+  overflow: hidden;
+  background: var(--color-hero-background);
+  color: var(--color-on-dark);
+}
+
+.hero-visual,
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .hero-visual {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-.hero-mask {
-    position: absolute;
-    inset: 0;
-    mask-image: url("../images/checkered-flag-rhombus.svg");
-    mask-mode: alpha;
-    mask-repeat: no-repeat;
-    mask-position: left center;
-    mask-size: cover;
-    -webkit-mask-image: url("../images/checkered-flag-rhombus.svg");
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: left center;
-    -webkit-mask-size: cover;
+  z-index: -2;
+  pointer-events: none;
 }
 
 .hero-slide {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0;
-    transition: opacity var(--duration-hero-fade) ease-in-out;
+  display: block;
+  object-fit: cover;
+  object-position: center 60%;
+  opacity: 0;
+  transition: opacity var(--duration-hero-fade) ease-in-out;
 }
 
 .hero-slide.is-active {
-    opacity: 1;
+  opacity: 1;
 }
 
-.hero-visual::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-            to right,
-            rgb(var(--color-background-rgb) / 0%) 24%,
-            rgb(var(--color-background-rgb) / 8%) 36%,
-            rgb(var(--color-background-rgb) / 42%) 48%,
-            rgb(var(--color-background-rgb) / 88%) 61%,
-            rgb(var(--color-background-rgb) / 98%) 77%,
-            var(--color-background) 94%
-        );
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(to right, rgb(var(--color-overlay-rgb) / 82%) 0%, rgb(var(--color-overlay-rgb) / 60%) 28%, rgb(var(--color-overlay-rgb) / 14%) 64%, rgb(var(--color-overlay-rgb) / 3%) 100%),
+    linear-gradient(to bottom, rgb(var(--color-overlay-rgb) / 48%) 0%, transparent 28%, transparent 64%, rgb(var(--color-overlay-rgb) / 50%) 100%);
 }
 
 .hero-content {
-    position: relative;
-    z-index: 2;
-    grid-column: 2;
-    width: 100%;
-    min-width: 0;
-    max-width: none;
-    padding-left: 2vw;
-    justify-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-8); /* 32px */
+}
+
+.hero-content h1 {
+  margin: 0;
+  max-width: 13ch;
+  color: inherit;
+  font-size: clamp(56px, 5.8vw, 200px);
+  font-weight: var(--font-weight-black);
+  line-height: 0.85;
+  letter-spacing: -0.055em;
+}
+
+.hero-content h1 span {
+  display: block;
+}
+
+.hero-controls {
+  position: absolute;
+  bottom: var(--space-9);
+  left: var(--page-gutter);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.hero-pagination,
+.hero-playback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.hero-pagination {
+  width: 44px;
+}
+
+.hero-pagination span {
+  width: 100%;
+  height: 2px;
+  background: rgb(var(--color-on-dark-rgb) / 35%);
+  transition: background-color 200ms ease;
+}
+
+.hero-pagination.is-active span,
+.hero-pagination:hover span {
+  background: var(--color-on-dark);
+}
+
+.hero-playback {
+  width: 44px;
+  margin-left: var(--space-2);
+  color: rgb(var(--color-on-dark-rgb) / 80%);
+}
+
+.hero-playback svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+.hero-controls button:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-on-dark);
+  outline-offset: var(--focus-ring-offset);
 }
 
 @media (max-width: 900px) {
-    .hero {
-        grid-template-columns: 1fr;
-        align-items: end;
-        min-height: 100svh;
-        padding:
-            max(48svh, 300px)
-            var(--space-7)
-            max(var(--space-11), 12svh);
-    }
+  .hero {
+    align-items: flex-end;
+    padding: 128px var(--space-7) 140px;
+  }
 
-    .hero-mask {
-        mask-size: auto 100%;
-        -webkit-mask-size: auto 100%;
-    }
+  .hero-slide {
+    object-position: 58% center;
+  }
 
-    .hero-slide {
-        background-size: cover;
-        background-position: center;
-        transform: translateY(-12%); /* Bump images to show them on mobile */
-    }
+  .hero::after {
+    background:
+      linear-gradient(to bottom, rgb(var(--color-overlay-rgb) / 42%) 0%, rgb(var(--color-overlay-rgb) / 8%) 28%, rgb(var(--color-overlay-rgb) / 44%) 52%, rgb(var(--color-overlay-rgb) / 86%) 100%),
+      linear-gradient(to right, rgb(var(--color-overlay-rgb) / 25%), transparent 90%);
+  }
 
-    .hero-visual::after {
-        background:
-            linear-gradient(
-                to bottom,
-                rgb(var(--color-background-rgb) / 0%) 30%,
-                rgb(var(--color-background-rgb) / 30%) 48%,
-                rgb(var(--color-background-rgb) / 95%) 65%,
-                var(--color-background) 75%
-            ),
-            linear-gradient(
-                to right,
-                rgb(var(--color-background-rgb) / 0%) 30%,
-                rgb(var(--color-background-rgb) / 65%) 100%
-            );
-    }
+  .hero-content h1 {
+    font-size: clamp(36px, 15vw, 120px);
+  }
 
-    .hero-content {
-        grid-column: 1;
-        justify-self: start;
-        padding-left: 0;
-        max-width: 100%;
-        margin-top: 0;
-    }
+  .hero-controls {
+    bottom: var(--space-8);
+    left: var(--space-7);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .hero-slide {
-        transition: none;
-    }
+  .hero-slide,
+  .hero-pagination span {
+    transition: none;
+  }
 }

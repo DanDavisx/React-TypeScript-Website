@@ -10,6 +10,14 @@
     font-display: swap;
 }
 
+@font-face {
+  font-family: "Mattone";
+  src: url("../fonts/mattone/Mattone-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :where(h1) {
     font-family: var(--font-heading);
     margin: 0 0 var(--space-7);
@@ -37,6 +45,88 @@
     font-size: var(--font-size-body);
     line-height: 1.5;
     color: var(--color-text-body);
+}
+
+:where(.btn) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+
+  min-height: var(--control-size);
+  padding: 0 var(--space-7);
+
+  border: 1px solid transparent;
+  border-radius: 0;
+
+  font-family: var(--font-button);
+  font-weight: var(--font-weight-button);
+  font-size: var(--font-size-md);
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+
+  transition: background-color 200ms ease;
+}
+
+/* Shared square menu controls */
+.btn-menu {
+  flex-direction: column;
+  gap: var(--space-1);
+  width: var(--control-size);
+  height: var(--control-size);
+  padding: var(--space-4);
+}
+
+.btn-menu:hover {
+  color: var(--color-interactive-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-menu {
+    transition: none;
+  }
+}
+
+/* B1: primary red button */
+.btn-b1 {
+  background: var(--color-btn1-bg);
+  color: var(--color-btn1-text);
+}
+
+.btn-b1:hover {
+  background: var(--color-btn1-bghover);
+}
+
+/* B2: secondary light button */
+.btn-b2 {
+  background: var(--color-btn2-bg);
+  color: var(--color-btn2-text);
+}
+
+.btn-b2:hover {
+  background: var(--color-btn2-bghover);
+}
+
+/* B3: outlined button for light backgrounds */
+.btn-b3 {
+  background: transparent;
+  color: var(--color-text-heading);
+  border-color: currentColor;
+}
+
+.btn-b3:hover {
+  background: var(--color-btn2-bg);
+}
+
+:where(.btn):focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-interactive-accent);
+  outline-offset: var(--focus-ring-offset);
 }
 
 @media (max-width: 900px) {

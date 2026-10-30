@@ -2,6 +2,7 @@ import Header from './components/SiteHeader'
 import SideNavigation from './components/SideNav'
 import Hero from './components/Hero'
 import { useState } from 'react'
+import RecentArticles from './components/RecentArticles'
 
   function App() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -20,6 +21,7 @@ import { useState } from 'react'
       <Header isMenuOpen={isMenuOpen} onOpenMenu={openMenu}/>
       <SideNavigation isOpen={isMenuOpen} onClose={closeMenu}/>
       <Hero />
+      <RecentArticles />
     </>
   )
 }
